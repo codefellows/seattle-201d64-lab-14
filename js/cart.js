@@ -25,6 +25,11 @@ function clearCart() {}
 function showCart() {
 
   // TODO: Find the table body
+var table = document.getElementById('cart');
+var createRow = document.createElement('tr');
+var createCell = document.createElement('td');
+createCell.textContent = '';
+createRow.appendChild(createCell);
 
   // TODO: Iterate over the items in the cart
   // TODO: Create a TR
@@ -35,10 +40,15 @@ function showCart() {
 
 function removeItemFromCart(event) {
 
+
+
+
+  
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
-
+  
+  renderCart();
 }
 
 // This will initialize the page and draw the cart on screen
