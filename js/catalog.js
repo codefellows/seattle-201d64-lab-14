@@ -46,7 +46,7 @@ function handleSubmit(event) {
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
-  
+  console.log('cart from addtocart', cart);
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
@@ -63,6 +63,9 @@ function updateCartPreview() {
   // TODO: Add a new element to the cartContents div with that information
   var products = 'test';
   var quantity = 0;
+  //establish variable to store in memory
+  //div? to store createelement
+  console.log('cart from preview cart', cart);
   for(var i = 0; i < Cart.length; i++){
     products = Cart[i];
     console.log('from for loop', Cart[i]);
