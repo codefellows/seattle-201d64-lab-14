@@ -34,8 +34,6 @@ function handleSubmit(event) {
 
   var itemsToCart = event.target.items.value;
   var quantityToCart = event.target.quantity.value;
-  // console.log('items in cart', itemsToCart);
-  // console.log('quantity', quantityToCart);
   cart.addItem(itemsToCart, quantityToCart);
   console.log('cart as is: ', cart);
   // Do all the things ...
@@ -58,9 +56,22 @@ function addSelectedItemToCart() {
 function updateCounter() {}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
+// cartContents id
+console.log('cart items?',this.cart.items);
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
+  var products = 'test';
+  var quantity = 0;
+  for(var i = 0; i < Cart.length; i++){
+    products = Cart[i];
+    console.log('from for loop', Cart[i]);
+  }
+  var cartContents = document.getElementById('cartContents');
+  var cartTag = document.createElement('p');
+  cartTag.textContent = products + ', ' + quantity;
+  cartContents.appendChild(cartTag);
+  console.log('cart items in preview?', cart);
 }
 
 // Set up the "submit" event listener on the form.
