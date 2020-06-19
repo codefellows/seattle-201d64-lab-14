@@ -12,6 +12,11 @@ function populateForm() {
   //TODO: Add an <option> tag inside the form's select for each product
   var selectElement = document.getElementById('items');
   for (var i in Product.allProducts) {
+    var target = document.getElementById('items');
+    var option = document.createElement('option');
+    option.textContent = Product.allProducts[i].name;
+    option.value = Product.allProducts[i].name;
+    target.appendChild(option);
 
   }
 
@@ -23,9 +28,10 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
+  event.preventDefault();
 
   // Do all the things ...
-  addSelectedItemToCart();
+  addSelectedItemToCart(); //DONE
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
@@ -35,12 +41,20 @@ function handleSubmit(event) {
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
+  var itemPickedSelect = document.getElementById('items');
+  var itemPicked = itemPickedSelect.value;
   // TODO: get the quantity
+  var quantityPickedInput = document.getElementById('quantity');
+  var quantity = quantityPickedInput.value;
   // TODO: using those, add one item to the Cart
+  // TODO: put them in an array, Cart should have an items property that is an array
+  cart.addItem(itemPicked, quantity);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
@@ -52,7 +66,7 @@ function updateCartPreview() {
 // This is the trigger for the app. When a user "submits" the form, it will
 // Call that handleSubmit method above and kick off the whole process
 var catalogForm = document.getElementById('catalog');
-catalogForm.addEventListener('submit', handleSubmit);
+catalogForm.addEventListener('submit', handleSubmit); // TODO: 58 needs handleSubmit
 
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.

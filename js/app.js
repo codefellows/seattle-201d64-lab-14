@@ -1,5 +1,17 @@
 'use strict';
 
+/*
+  approaches :
+    looked for easy things to do so we would have things to work on
+    reading through all of it showed us how it all tied together
+    - prevented rewriting something that existed
+    - see if something looked like an earlier project, compare them side by side
+    - look over project and see what relied on each other. When really stuck, moved to another place
+
+    - Find what is being called (and see if its complete)
+*/
+
+
 // Cart constructor.
 var Cart = function(items) {
   // this.items is an array of CartItem instances.
@@ -8,10 +20,20 @@ var Cart = function(items) {
 
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  var newItem = new CartItem(product, quantity);
+  this.items.push(newItem);
+  console.log(this.items);
 };
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+
+  var itemsICanUse = this.items;
+
+  // 1. stringify the data
+  var stringyItems = JSON.stringify(itemsICanUse);
+  // 2. set the data with setItem
+  localStorage.setItem('cart', stringyItems);
 };
 
 Cart.prototype.removeItem = function(item) {
